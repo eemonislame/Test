@@ -1,58 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simple C Compiler</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
-    textarea { width: 100%; height: 300px; font-family: monospace; }
-    button { margin: 10px 0; padding: 10px 20px; }
-    pre { background: #f4f4f4; padding: 10px; white-space: pre-wrap; }
-  </style>
+    
+    <meta charset="UTF-8">
+    <title>Page title</title>
 </head>
 <body>
-  <h1>Simple C Compiler</h1>
-  <textarea id="code" placeholder="Write your C code here..."></textarea>
-  <button id="run">Run Code</button>
-  <h3>Output:</h3>
-  <pre id="output">Waiting for code...</pre>
+    <pre>
+        <code>
+      
+<c>#include</c>&ltstdio.h&gt;
+int fibonacci(int n);
 
-  <script>
-    document.getElementById("run").addEventListener("click", () => {
-      const code = document.getElementById("code").value;
-      const outputElement = document.getElementById("output");
+int main() {
+    int n, c;
 
-      // Using CORS-anywhere proxy to bypass CORS restrictions
-      const proxy = "https://cors-anywhere.herokuapp.com/";
-      const apiEndpoint = "https://api.jdoodle.com/v1/execute";
-      const clientId = "5f2c4c00562820c6f27d0fa1780e73d7"; // Replace with your JDoodle Client ID
-      const clientSecret = "e6add7af2a14c4947a8f56d15cc6b25478be38b255f08342b49611c1e11ff041"; // Replace with your JDoodle Client Secret
+    printf("Enter the number of terms: ");
+    scanf("%d", &n);
 
-      fetch(proxy + apiEndpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          clientId: clientId,
-          clientSecret: clientSecret,
-          script: code,
-          language: "c",
-          versionIndex: "0",
-        }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.output) {
-            outputElement.textContent = data.output;
-          } else {
-            outputElement.textContent = "Error: " + (data.error || "Unknown error");
-          }
-        })
-        .catch((err) => {
-          outputElement.textContent = "Error: Unable to execute code.";
-          console.error(err);
-        });
-    });
-  </script>
+    printf("Fibonacci series:\n");
+
+    for (c = 0; c < n; c++) {
+        printf("%d\t", fibonacci(c));
+    }
+    printf("\n");
+
+    return 0;
+}
+
+int fibonacci(int n) {
+    if (n == 0) {
+        return 0;
+    } else if (n == 1) {
+        return 1;
+    } else {
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+}
+        </code>
+    </pre>
 </body>
 </html>
