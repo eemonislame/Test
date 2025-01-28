@@ -15,7 +15,7 @@ body {
   position: relative;
   width: 100%;
   height: 100vh;
-  background: url('space-bg.jpg') no-repeat center center/cover;
+  background: url('https://raw.githubusercontent.com/eemonislame/Test/refs/heads/main/space.png') no-repeat center center/cover;
 }
 
 #player {
@@ -25,14 +25,14 @@ body {
   transform: translateX(-50%);
   width: 50px;
   height: 50px;
-  background: url('spaceship.png') no-repeat center center/cover;
+  background: url('https://raw.githubusercontent.com/eemonislame/Test/refs/heads/main/Spaceship_tut.png') no-repeat center center/cover;
 }
 
 .enemy {
   position: absolute;
   width: 40px;
   height: 40px;
-  background: url('asteroid.png') no-repeat center center/cover;
+  background: url('https://raw.githubusercontent.com/eemonislame/Test/refs/heads/main/flamerock_strip2.png') no-repeat center center/cover;
 }
 
 .bullet {
