@@ -8,6 +8,25 @@ let score = 0;
 let gameOver = false;
 
 // Move player with arrow keys
+// Touch controls for mobile devices
+let touchStartX = 0;
+let touchOffsetX = 0;
+
+player.addEventListener('touchstart', (e) => {
+  if (gameOver) return;
+  touchStartX = e.touches[0].clientX; // Record the initial touch position
+});
+
+player.addEventListener('touchmove', (e) => {
+  if (gameOver) return;
+  e.preventDefault(); // Prevent default touch behavior (e.g., scrolling)
+  const touchCurrentX = e.touches[0].clientX;
+  touchOffsetX = touchCurrentX - touchStartX; // Calculate the movement offset
+  playerX += (touchOffsetX / window.innerWidth) * 100; // Convert to percentage
+  playerX = Math.max(0, Math.min(95, playerX)); // Keep the player within bounds
+  player.style.left = `${playerX}%`;
+  touchStartX = touchCurrentX; // Update the touch start position
+});
 document.addEventListener('keydown', (e) => {
   if (gameOver) return;
   if (e.key === 'ArrowLeft' && playerX > 0) {
